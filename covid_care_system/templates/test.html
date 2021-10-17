@@ -1,0 +1,334 @@
+<html>
+
+<head>
+      {% load static %}
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Covid Care</title>
+  <meta content="" name="descriptison">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="{% static 'img/favicon.png' %}" rel="icon">
+  <link href="{% static 'img/apple-touch-icon.png' %}" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'vendor/icofont/icofont.min.css' %}" rel="stylesheet">
+  <link href="{% static 'vendor/boxicons/css/boxicons.min.css' %}" rel="stylesheet">
+  <link href="{% static 'vendor/venobox/venobox.css' %}" rel="stylesheet">
+  <link href="{% static 'vendor/animate.css/animate.min.css' %}" rel="stylesheet">
+  <link href="{% static 'vendor/remixicon/remixicon.css' %}" rel="stylesheet">
+  <link href="{% static 'vendor/owl.carousel/assets/owl.carousel.min.css' %}" rel="stylesheet">
+  <link href="{% static 'vendor/bootstrap-datepicker/css/bootstrap-datepicker.min.css' %}" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="{% static 'css/style.css' %}" rel="stylesheet">
+
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@200&display=swap" rel="stylesheet">
+
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            background-color: #2c4964;
+            font-family: 'Josefin Sans', sans-serif;
+        }
+
+        button {
+            background-color: transparent;
+            color: rgb(222, 255, 130);
+            border: none;
+        }
+    </style>
+</head>
+
+<body onload="datafetcht();datafetch();">
+<!-- ======= Top Bar ======= -->
+  <div id="topbar" class="d-none d-lg-flex align-items-center fixed-top">
+    <div class="container d-flex">
+      <div class="contact-info mr-auto">
+        <i class="icofont-envelope"></i> <a href="mailto:parneetpp@gmail.com">covidcare@gmail.com</a>
+        <i class="icofont-phone"></i> +91-9501616414
+        <i class="icofont-google-map"></i> Thapar Institue, Patiala
+      </div>
+      <div class="social-links">
+        <a href="#" class="twitter"><i class="icofont-twitter"></i></a>
+        <a href="https://www.facebook.com/parneet.singh.562114" class="facebook"><i class="icofont-facebook"></i></a>
+        <a href="https://www.instagram.com/parneet_p_p/" class="instagram"><i class="icofont-instagram"></i></a>
+        <a href="#" class="skype"><i class="icofont-skype"></i></a>
+        <a href="https://www.linkedin.com/in/parneet-singh-7052861a3/" class="linkedin"><i class="icofont-linkedin"></i></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top">
+    <div class="container d-flex align-items-center">
+
+      <h1 class="logo mr-auto"><a href="{% url 'home' %}">Covid Care</a></h1>
+      <!-- Uncomment below if you prefer to use an image logo -->
+      <!-- <a href="index.html" class="logo mr-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+
+      <nav class="nav-menu d-none d-lg-block">
+        <ul>
+          <li class="active"><a href="{% url 'home' %}">Home</a></li>
+          <li><a href="{% url 'loginpage' %}">Login</a>
+            <li><a href="{% url 'signuppage' %}">Sign Up</a>
+
+          </li>
+
+        </ul>
+      </nav><!-- .nav-menu -->
+
+
+    </div>
+  </header><!-- End Header -->
+
+
+    <div class="container mt-5 pt-5">
+        <header>
+            <br><br>
+
+            <h1 class="display-3 text-center text-primary" style="font-size:4vh; font-weight: bold; font-family:'Kanit', sans-serif;">COVID19-<span class="text-danger">TESTING</h1>
+            <hr class="w-25 mx-auto pb-5">
+
+         </header>
+
+        </div>
+
+
+            <div class="tabcontent" id="tracker">
+            <div class="container">
+            <h2 class="text-center font-weight-bold" id="date1" style="font-size:2.5vh;color: darkkhaki;"></h2>
+            <br><br>
+            <div data-aos="zoom-in">
+            <div class="row">
+                    <div class="col-lg-4 col-md-4 col-4" id="conf">
+
+                    </div>
+
+                    <div class="col-lg-4 col-md-4 col-4" id="rcvr">
+                        <h2 class="text-warning text-center font-weight-bold" style="font-size:2.5vw;font-size:3.0vh;">[Total Tested]</h2><br>
+
+                        <h1 id="tst" class="text-light text-center font-weight-bold" style="font-size:2.5vw;font-size:2.5vh;font-weight:bold;"> </h1><br>
+
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-4" id="death">
+
+                    </div>
+                </div>
+            </div>
+                <hr class="w-25 mx-auto pb-1">
+
+                <section>
+                <div class="container">
+                      <div class="table table-responsive centered text-center" >
+                          <table class="table-striped text-center centered" id="tbval" style="font-size:2.2vw;font-size:3vh;margin: auto;">
+                              <tr>
+                                  <th class="text-primary th-lg" onclick="sortTable(0)">Country</th>
+                                  <th class="text-primary th-lg" onclick="sortTable(1)">Total Cases ^</th>
+                                  <th class="text-primary th-lg" onclick="sortTable(2)">Total Tests ^</th>
+                                  <th class="text-primary th-lg" onclick="sortTable(3)">Tests Per 1M ^</th>
+                                  <th class="text-primary th-lg" onclick="sortTable(4)">Cases Per 1M ^</th>
+                                  <th class="text-primary th-lg" onclick="sortTable(5)">Deaths Per 1M ^</th>
+
+
+                              </tr>
+                          </table>
+                        </div>
+                  </div>
+                </section>
+            </div>
+            </div>
+
+
+
+
+ <hr class="w-25 mx-auto pb-5">
+ <br>
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer">
+
+    <div class="footer-top">
+      <div class="container">
+        <div class="row">
+
+          <div class="col-lg-3 col-md-6 footer-contact">
+            <h3>Covid Care </h3>
+            <p>
+              Thapar University <br>
+              Patiala, 147001<br>
+              Punjab <br><br>
+              <strong>Phone:</strong> +91 9501616414<br>
+              <strong>Email:</strong> covidcare@gmail.com<br>
+            </p>
+          </div>
+
+          <div class="col-lg-2 col-md-6 footer-links">
+            <h4>Useful Links</h4>
+            <ul>
+              <li><i class="bx bx-chevron-right"></i> <a href="{% url 'home' %}">Home</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#about">About us</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#services">Services</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Terms of service</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Privacy policy</a></li>
+            </ul>
+          </div>
+
+          <div class="col-lg-3 col-md-6 footer-links">
+            <h4>Our Services</h4>
+            <ul>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Quick Updates</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Get Nearest Hospitals</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Nearest Medical Stores</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Recent developments</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Doorstep Services</a></li>
+            </ul>
+          </div>
+
+          <div class="col-lg-4 col-md-6 footer-newsletter">
+            <h4>Join Our Newsletter</h4>
+            <p>Subscribe to our newsletter for daily news updates.</p>
+            <form action="" method="post">
+              <input type="email" name="email"><input type="submit" value="Subscribe">
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="container d-md-flex py-4">
+
+      <div class="mr-md-auto text-center text-md-left">
+        <div class="copyright">
+          &copy; Copyright <strong><span>Parneet</span></strong>. All Rights Reserved
+        </div>
+        <div class="credits">
+
+          Designed by Parneet Singh
+        </div>
+      </div>
+      <div class="social-links text-center text-md-right pt-3 pt-md-0">
+        <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
+        <a href="https://www.facebook.com/parneet.singh.562114" class="facebook"><i class="bx bxl-facebook"></i></a>
+        <a href="https://www.instagram.com/parneet_p_p/" class="instagram"><i class="bx bxl-instagram"></i></a>
+        <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
+        <a href="https://www.linkedin.com/in/parneet-singh-7052861a3/" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+      </div>
+    </div>
+  </footer><!-- End Footer -->
+
+
+
+
+
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+        <script>
+  AOS.init();
+</script>
+<script>
+
+
+// Get the element with id="defaultOpen" and click on it
+
+            function datafetch(){
+                $.get("https://coronavirus-19-api.herokuapp.com/countries",
+                    function (data){
+                         var c=(data.length);
+
+                        var tbval =document.getElementById('tbval');
+
+                        for(var i=1;i<c;i++){
+                            var x= tbval.insertRow();
+                            x.insertCell(0);
+                            tbval.rows[i].cells[0].innerHTML = data[i]['country'];
+                            tbval.rows[i].cells[0].style.color = 'white' ;
+                            x.insertCell(1);
+                            tbval.rows[i].cells[1].innerHTML = data[i]['cases'];
+                            tbval.rows[i].cells[1].style.color = 'yellow' ;
+
+                            x.insertCell(2);
+                            tbval.rows[i].cells[2].innerHTML = data[i]['totalTests'];
+                            tbval.rows[i].cells[2].style.color = 'lightgreen' ;
+                            x.insertCell(3);
+                            tbval.rows[i].cells[3].innerHTML = data[i]['testsPerOneMillion'];
+                            tbval.rows[i].cells[3].style.color = 'deepskyblue' ;
+                            tbval.rows[i].cells[3].style.font= 'bold' ;
+                            x.insertCell(4);
+                            tbval.rows[i].cells[4].innerHTML = data[i]['casesPerOneMillion'];
+                            tbval.rows[i].cells[4].style.color = 'deepskyblue' ;
+                            x.insertCell(5);
+                            tbval.rows[i].cells[5].innerHTML = data[i]['deathsPerOneMillion'];
+                            tbval.rows[i].cells[5].style.color = 'rgb(255, 91, 91)' ;
+
+
+
+
+
+                        }
+                    }
+                )
+
+            }
+
+            function datafetcht(){
+                $.get("https://api.quarantine.country/api/v1/summary/latest",
+                    function (data){
+                        document.getElementById('tst').innerHTML=data['data']['summary']['tested'];
+                    }
+                )
+            }
+            function sortTable(n) {
+                var table, rows, switching, i, x, y, shouldSwitch;
+  table = document.getElementById("tbval");
+  switching = true;
+  /*Make a loop that will continue until
+  no switching has been done:*/
+  while (switching) {
+    //start by saying: no switching is done:
+    switching = false;
+    rows = table.rows;
+    /*Loop through all table rows (except the
+    first, which contains table headers):*/
+    for (i = 1; i < (rows.length - 1); i++) {
+      //start by saying there should be no switching:
+      shouldSwitch = false;
+      /*Get the two elements you want to compare,
+      one from current row and one from the next:*/
+      x = rows[i].getElementsByTagName("TD")[n];
+      y = rows[i + 1].getElementsByTagName("TD")[n];
+      //check if the two rows should switch place:
+      if (Number(x.innerHTML) < Number(y.innerHTML)) {
+        //if so, mark as a switch and break the loop:
+        shouldSwitch = true;
+        break;
+      }
+    }
+    if (shouldSwitch) {
+      /*If a switch has been marked, make the switch
+      and mark that a switch has been done:*/
+      rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+      switching = true;
+    }
+  }
+}
+
+
+        </script>
+
+    </body>
+</html>

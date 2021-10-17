@@ -1,0 +1,1058 @@
+<html>
+
+<head>
+
+      {% load static %}
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Covid Care</title>
+  <meta content="" name="descriptison">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="{% static 'img/favicon.png' %}" rel="icon">
+  <link href="{% static 'img/apple-touch-icon.png' %}" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'vendor/icofont/icofont.min.css' %}" rel="stylesheet">
+  <link href="{% static 'vendor/boxicons/css/boxicons.min.css' %}" rel="stylesheet">
+  <link href="{% static 'vendor/venobox/venobox.css' %}" rel="stylesheet">
+  <link href="{% static 'vendor/animate.css/animate.min.css' %}" rel="stylesheet">
+  <link href="{% static 'vendor/remixicon/remixicon.css' %}" rel="stylesheet">
+  <link href="{% static 'vendor/owl.carousel/assets/owl.carousel.min.css' %}" rel="stylesheet">
+  <link href="{% static 'vendor/bootstrap-datepicker/css/bootstrap-datepicker.min.css' %}" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="{% static 'css/style.css' %}" rel="stylesheet">
+
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@200&display=swap" rel="stylesheet">
+
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: #2c4964;
+            font-family: 'Josefin Sans', sans-serif;
+        }
+
+        button {
+            background-color: transparent;
+            color: rgb(222, 255, 130);
+            border: none;
+        }
+    </style>
+</head>
+
+<body onload="datafetch();">
+ <!-- ======= Top Bar ======= -->
+  <div id="topbar" class="d-none d-lg-flex align-items-center fixed-top">
+    <div class="container d-flex">
+      <div class="contact-info mr-auto">
+        <i class="icofont-envelope"></i> <a href="mailto:parneetpp@gmail.com">covidcare@gmail.com</a>
+        <i class="icofont-phone"></i> +91-9501616414
+        <i class="icofont-google-map"></i> Thapar Institue, Patiala
+      </div>
+      <div class="social-links">
+        <a href="#" class="twitter"><i class="icofont-twitter"></i></a>
+        <a href="https://www.facebook.com/parneet.singh.562114" class="facebook"><i class="icofont-facebook"></i></a>
+        <a href="https://www.instagram.com/parneet_p_p/" class="instagram"><i class="icofont-instagram"></i></a>
+        <a href="#" class="skype"><i class="icofont-skype"></i></a>
+        <a href="https://www.linkedin.com/in/parneet-singh-7052861a3/" class="linkedin"><i class="icofont-linkedin"></i></a>
+      </div>
+    </div>
+  </div>
+         <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top">
+    <div class="container d-flex align-items-center">
+
+      <h1 class="logo mr-auto"><a href="{% url 'home' %}">Covid Care</a></h1>
+      <!-- Uncomment below if you prefer to use an image logo -->
+      <!-- <a href="index.html" class="logo mr-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+
+      <nav class="nav-menu d-none d-lg-block">
+        <ul>
+          <li class="active"><a href="{% url 'home' %}">Home</a></li>
+          <li><a href="{% url 'loginpage' %}">Login</a>
+            <li><a href="{% url 'signuppage' %}">Sign Up</a>
+
+          </li>
+
+
+        </ul>
+      </nav><!-- .nav-menu -->
+
+
+    </div>
+  </header><!-- End Header -->
+
+  <div class="container mt-5 pt-5">
+
+        <header>
+            <br><br>
+
+            <h1 class="display-3 text-center text-primary" style="font-size:4vh; font-weight: bold; font-family:'Kanit', sans-serif;">COVID19-<span class="text-danger">INDIA</h1>
+            <hr class="w-25 mx-auto pb-5">
+            <div class="row">
+            <div class="col-lg-4 col-md-4 col-4 text-center">
+            <button class="tablink text-center" onclick="openCity('tracker', this);" id="defaultOpen" style="font-size:1.5vw; font-size:3vh;">Live Tracker</button>
+            </div>
+            <div class="col-lg-4 col-md-4 col-4 text-center">
+            <button class="tablink text-center" onclick="openCity('daily', this);dailyfetch();" style="font-size:1.5vw; font-size:3vh;">Daily Status</button>
+            </div>
+            <div class="col-lg-4 col-md-4 col-4 text-center">
+            <button class="tablink text-center" onclick="openCity('his', this);dailyhist();" style="font-size:1.5vw; font-size:3vh;">Daily History</button>
+            </div>
+            </div>
+
+         </header>
+            <hr class="w-25 mx-auto pb-5">
+        </div>
+
+
+            <div class="tabcontent" id="tracker">
+            <div class="container">
+            <h2 class="text-center font-weight-bold" id="date1" style="font-size:2.5vh;color: darkkhaki;"></h2>
+            <br><br>
+            <div data-aos="zoom-in">
+            <div class="row">
+                    <div class="col-lg-3 col-md-3 col-3" id="conf">
+                        <h2 class="text-warning text-center font-weight-bold" style="font-size:2.5vw;font-size:3vh;">[Confirmed]</h2><br>
+                        <h1 id="con" class="text-light text-center font-weight-bold" style="font-size:2.5vw;font-size:2.5vh;font-weight:bold;"> </h1><br>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-3" id="active">
+                        <h2 class="text-primary text-center font-weight-bold" style="font-size:2.5vw;font-size:3vh;">[Active]</h2><br>
+                        <h1 id="act" class="text-light text-center font-weight-bold" style="font-size:2.5vw;font-size:2.5vh;font-weight:bold;"> </h1><br>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-3" id="rcvr">
+                        <h2 class="text-success text-center font-weight-bold" style="font-size:2.5vw;font-size:3vh;">[Recovered]</h2><br>
+                        <h1 id="rcv" class="text-light text-center font-weight-bold" style="font-size:2.5vw;font-size:2.5vh;font-weight:bold;"> </h1><br>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-3" id="death">
+                        <h2 class="text-danger text-center font-weight-bold" style="font-size:2.5vw;font-size:3vh;">[Deaths]</h2><br>
+                        <h1 id="dth" class="text-light text-center font-weight-bold" style="font-size:2.5vw;font-size:2.5vh;"> </h1><br>
+                    </div>
+                </div>
+            </div>
+                <hr class="w-25 mx-auto pb-5">
+
+                <section>
+                <div class="container">
+                      <div class="table table-responsive centered text-center" >
+                          <table class="table-striped text-center centered" id="tbval" style="font-size:2.2vw;font-size:3vh;margin: auto;">
+                              <tr>
+                                  <th class="text-primary th-lg"  onclick="sortTable(0)">State/UT</th>
+                                  <th class="text-primary th-lg"  onclick="sortTable(1)">StateCode </th>
+                                  <th class="text-primary th-lg"  onclick="sortTable(2)">Confirmed ^</th>
+                                  <th class="text-primary th-lg"  onclick="sortTable(3)">Active ^</th>
+                                  <th class="text-primary th-lg"  onclick="sortTable(4)">Recovered ^</th>
+                                  <th class="text-primary th-lg"  onclick="sortTable(5)">Deaths ^</th>
+                              </tr>
+                          </table>
+                        </div>
+                  </div>
+                </section>
+            </div>
+            </div>
+
+
+
+           <div class="tabcontent" id="daily">
+
+           <div class="container">
+               <h2 class="text-center font-weight-bold" id="date" style="font-size:1.5vh;color: darkkhaki;"></h2>
+            <br><br>
+               <div class="row">
+                    <div class="col-lg-4 col-md-4 col-4" id="conf">
+                        <h2 class="text-warning text-center font-weight-bold" style="font-size:2.5vw;font-size:1.5vh;">[Confirmed]</h2><br>
+                        <h3 id="dcon" class="text-light text-center font-weight-bold " style="font-size:2.5vw;font-size:2.5vh;"> </h3><br>
+                    </div>
+                    <!-- <div class="col-lg-4 col-md-4 col-4" id="active">
+                        <h2 class="text-primary text-center font-weight-bold" style="font-size:2.5vw;font-size:1.5vh;">[Active]</h2><br>
+                        <h3 id="act" class="text-light text-center" style="font-size:2.5vw;font-size:2.5vh;"> </h3><br>
+                    </div> -->
+                    <div class="col-lg-4 col-md-4 col-4" id="rcvr">
+                        <h2 class="text-success text-center font-weight-bold" style="font-size:2.5vw;font-size:1.5vh;">[Recovered]</h2><br>
+                        <h3 id="drcv" class="text-light text-center font-weight-bold" style="font-size:2.5vw;font-size:2.5vh;"> </h3><br>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-4" id="death">
+                        <h2 class="text-danger text-center font-weight-bold" style="font-size:2.5vw;font-size:1.5vh;">[Deaths]</h2><br>
+                        <h3 id="ddth" class="text-light text-center font-weight-bold" style="font-size:2.5vw;font-size:2.5vh;"> </h3><br>
+                    </div>
+                </div>
+                <hr class="w-25 mx-auto pb-5">
+
+                <section>
+                <div class="container">
+                      <div class="table table-responsive centered" >
+                          <table class="table-striped text-center centered" id="tbval1" style="font-size:2.2vw;font-size:1.85vh;margin: auto;">
+                              <tr>
+                                  <th class="text-primary th-lg"  onclick="sortTable1(0)">State/UT</th>
+
+                                  <th class="text-primary th-lg"  onclick="sortTable1(1)">Confirmed ^</th>
+
+                                  <th class="text-primary th-lg"  onclick="sortTable1(2)">Recovered ^</th>
+                                  <th class="text-primary th-lg"  onclick="sortTable1(3)">Deaths ^</th>
+                              </tr>
+                               <tr id="1">
+                                      <td class="text-light text-centre" >Andaman and Nicobar Islands</td>
+                                    </tr>
+                                    <tr id="2">
+                                      <td class="text-light text-centre"  >Andhra Pradesh</td>
+                                    </tr>
+                                    <tr id="3">
+                                      <td class="text-light text-centre"  >Arunachal Pradesh</td>
+                                    </tr>
+                                    <tr id="4">
+                                      <td class="text-light text-centre" >Assam</td>
+                                    </tr>
+                                    <tr id="5">
+                                         <td class="text-light text-centre">Bihar</td>
+                                    </tr>
+                                    <tr id="6">
+                                      <td class="text-light text-centre" >Chandigarh</td>
+                                    </tr >
+                                    <tr id="7">
+                                      <td class="text-light text-centre" >Chhattisgarh</td>
+                                    </tr>
+                                    <tr id="8">
+                                      <td class="text-light text-centre">Daman and Diu</td>
+                                    </tr>
+                                    <tr id="9">
+                                      <td class="text-light text-centre">Delhi</td>
+                                    </tr>
+                                    <tr id="10">
+                                      <td class="text-light text-centre">Dadra and Nagar Haveli</td>
+                                    </tr>
+                                    <tr id="11">
+                                      <td class="text-light text-centre">Goa</td>
+                                    </tr>
+                                    <tr id="12">
+                                      <td class="text-light text-centre">Gujrat</td>
+                                    </tr>
+                                    <tr id="13">
+                                      <td class="text-light text-centre">Himachal Pradesh</td>
+                                    </tr>
+                                    <tr id="14">
+                                      <td class="text-light text-centre">Haryana</td>
+                                    </tr>
+                                    <tr id="15">
+                                      <td class="text-light text-centre">Jharkhand</td>
+                                    </tr>
+                                    <tr id="16">
+                                      <td class="text-light text-centre">Jammu and Kashmir</td>
+                                    </tr>
+                                    <tr id="17">
+                                      <td class="text-light text-centre">Karnataka</td>
+                                    </tr>
+                                    <tr id="18">
+                                      <td class="text-light text-centre">Kerala</td>
+                                    </tr>
+                                    <tr id="19">
+                                      <td class="text-light text-centre">Ladakh</td>
+                                    </tr>
+                                    <tr id="20">
+                                      <td class="text-light text-centre">Lakshadweep</td>
+                                    </tr>
+                                    <tr id="21">
+                                      <td class="text-light text-centre">Maharashtra</td>
+                                    </tr>
+                                    <tr id="22">
+                                      <td class="text-light text-centre">Meghalaya</td>
+                                    </tr>
+                                    <tr id="23">
+                                      <td class="text-light text-centre">Manipur</td>
+                                    </tr>
+                                    <tr id="24">
+                                      <td class="text-light text-centre">Madhya Pradesh</td>
+                                    </tr>
+                                    <tr id="25">
+                                      <td class="text-light text-centre">Mizoram</td>
+                                    </tr>
+                                    <tr id="26">
+                                      <td class="text-light text-centre">Nagaland</td>
+                                    </tr>
+                                    <tr id="27">
+                                      <td class="text-light text-centre">Odisha</td>
+                                    </tr>
+                                    <tr id="28">
+                                      <td class="text-light text-centre">Punjab</td>
+                                    </tr>
+                                    <tr id="29">
+                                      <td class="text-light text-centre">Puducherry</td>
+                                    </tr>
+                                    <tr id="30">
+                                      <td class="text-light text-centre">Rajasthan</td>
+                                    </tr>
+                                    <tr id="31">
+                                      <td class="text-light text-centre">Sikkim</td>
+                                    </tr>
+                                    <tr id="32">
+                                      <td class="text-light text-centre">Telangana</td>
+                                    </tr>
+                                    <tr id="33">
+                                      <td class="text-light text-centre">Tamil Nadu</td>
+                                    </tr>
+                                    <tr id="34">
+                                      <td class="text-light text-centre">Tripura</td>
+                                    </tr>
+                                    <tr id="35">
+                                      <td class="text-light text-centre">Uttar Pradesh</td>
+                                    </tr>
+                                    <tr id="36">
+                                      <td class="text-light text-centre">Uttrakhand</td>
+                                    </tr>
+                                    <tr id="37">
+                                      <td class="text-light text-centre">West Bengal</td>
+                                    </tr>
+
+                            </table>
+                        </div>
+
+                  </div>
+                </section>
+            </div>
+            </div>
+
+            <div class="tabcontent" id="his">
+
+           <div class="container">
+               <h2 class="text-center font-weight-bold" id="date3" style="font-size:1.5vh;color: darkkhaki;"></h2>
+            <br><br>
+               <div class="row">
+                    <div class="col-lg-4 col-md-4 col-4" id="">
+                        <h2 class="text-warning text-center font-weight-bold" style="font-size:2.5vw;font-size:1.5vh;">[Confirmed]</h2><br>
+                        <h3 id="dcon1" class="text-light text-center font-weight-bold " style="font-size:2.5vw;font-size:2.5vh;"> </h3><br>
+                    </div>
+                    <!-- <div class="col-lg-4 col-md-4 col-4" id="active">
+                        <h2 class="text-primary text-center font-weight-bold" style="font-size:2.5vw;font-size:1.5vh;">[Active]</h2><br>
+                        <h3 id="act" class="text-light text-center" style="font-size:2.5vw;font-size:2.5vh;"> </h3><br>
+                    </div> -->
+                    <div class="col-lg-4 col-md-4 col-4" id="">
+                        <h2 class="text-success text-center font-weight-bold" style="font-size:2.5vw;font-size:1.5vh;">[Recovered]</h2><br>
+                        <h3 id="drcv1" class="text-light text-center font-weight-bold" style="font-size:2.5vw;font-size:2.5vh;"> </h3><br>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-4" id="">
+                        <h2 class="text-danger text-center font-weight-bold" style="font-size:2.5vw;font-size:1.5vh;">[Deaths]</h2><br>
+                        <h3 id="ddth1" class="text-light text-center font-weight-bold" style="font-size:2.5vw;font-size:2.5vh;"> </h3><br>
+                    </div>
+                </div>
+                <hr class="w-25 mx-auto pb-5">
+
+                <section>
+                <div class="container">
+                    <h2 class="text-center text-light" style="font-size: 2.0vh">Last 30 Days History</h2>
+                    <br><br>
+                      <div class="table table-responsive centered" >
+                          <table class="table-striped text-center centered" id="tbval2" style="font-size:2.2vw;font-size:1.85vh;margin: auto;">
+                              <tr>
+                                  <th class="text-primary th-lg">Date</th>
+
+                                  <th class="text-primary th-lg">Confirmed </th>
+
+                                  <th class="text-primary th-lg">Recovered </th>
+                                  <th class="text-primary th-lg" >Deaths </th>
+                              </tr>
+
+                            </table>
+                        </div>
+
+                  </div>
+                </section>
+            </div>
+            </div>
+
+ <hr class="w-25 mx-auto pb-5">
+ <br>
+
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer">
+
+    <div class="footer-top">
+      <div class="container">
+        <div class="row">
+
+          <div class="col-lg-3 col-md-6 footer-contact">
+            <h3>Covid Care </h3>
+            <p>
+              Thapar University <br>
+              Patiala, 147001<br>
+              Punjab <br><br>
+              <strong>Phone:</strong> +91 9501616414<br>
+              <strong>Email:</strong> covidcare@gmail.com<br>
+            </p>
+          </div>
+
+          <div class="col-lg-2 col-md-6 footer-links">
+            <h4>Useful Links</h4>
+            <ul>
+              <li><i class="bx bx-chevron-right"></i> <a href="{% url 'home' %}">Home</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#about">About us</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#services">Services</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Terms of service</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Privacy policy</a></li>
+            </ul>
+          </div>
+
+          <div class="col-lg-3 col-md-6 footer-links">
+            <h4>Our Services</h4>
+            <ul>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Quick Updates</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Get Nearest Hospitals</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Nearest Medical Stores</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Recent developments</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Doorstep Services</a></li>
+            </ul>
+          </div>
+
+          <div class="col-lg-4 col-md-6 footer-newsletter">
+            <h4>Join Our Newsletter</h4>
+            <p>Subscribe to our newsletter for daily news updates.</p>
+            <form action="" method="post">
+              <input type="email" name="email"><input type="submit" value="Subscribe">
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="container d-md-flex py-4">
+
+      <div class="mr-md-auto text-center text-md-left">
+        <div class="copyright">
+          &copy; Copyright <strong><span>Parneet</span></strong>. All Rights Reserved
+        </div>
+        <div class="credits">
+
+          Designed by Parneet Singh
+        </div>
+      </div>
+      <div class="social-links text-center text-md-right pt-3 pt-md-0">
+        <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
+        <a href="https://www.facebook.com/parneet.singh.562114" class="facebook"><i class="bx bxl-facebook"></i></a>
+        <a href="https://www.instagram.com/parneet_p_p/" class="instagram"><i class="bx bxl-instagram"></i></a>
+        <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
+        <a href="https://www.linkedin.com/in/parneet-singh-7052861a3/" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+      </div>
+    </div>
+  </footer><!-- End Footer -->
+
+
+
+
+
+
+
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+        <script>
+  AOS.init();
+</script>
+<script>
+    var counter=0;
+        document.getElementById("defaultOpen").click();
+        function openCity(cityName, elmnt) {
+  // Hide all elements with class="tabcontent" by default */
+  var i, tabcontent, tablinks;
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+
+
+  // Show the specific tab content
+  document.getElementById(cityName).style.display = "block";
+
+}
+
+// Get the element with id="defaultOpen" and click on it
+
+            function datafetch(){
+                $.get("https://api.covid19india.org/data.json",
+                    function (data){
+                        // console.log(data['statewise'].length);
+                        document.getElementById('date1').innerHTML="Last Updated At "+data['statewise'][0]['lastupdatedtime'];
+                        document.getElementById('con').innerHTML=data['statewise'][0]['confirmed'];
+                        document.getElementById('act').innerHTML=data['statewise'][0]['active'];
+                        document.getElementById('rcv').innerHTML=data['statewise'][0]['recovered'];
+                        document.getElementById('dth').innerHTML=data['statewise'][0]['deaths'];
+                        var tbval =document.getElementById('tbval');
+
+                        for(var i=1;i<38;i++){
+                            var x= tbval.insertRow();
+                            x.insertCell(0);
+                            tbval.rows[i].cells[0].innerHTML = data['statewise'][i]['state'];
+                            tbval.rows[i].cells[0].style.color = 'white' ;
+                            x.insertCell(1);
+                            tbval.rows[i].cells[1].innerHTML = data['statewise'][i]['statecode'];
+                            tbval.rows[i].cells[1].style.color = 'white' ;
+
+                            x.insertCell(2);
+                            tbval.rows[i].cells[2].innerHTML = data['statewise'][i]['confirmed'];
+                            tbval.rows[i].cells[2].style.color = 'yellow' ;
+                            x.insertCell(3);
+                            tbval.rows[i].cells[3].innerHTML = data['statewise'][i]['active'];
+                            tbval.rows[i].cells[3].style.color = 'deepskyblue' ;
+                            x.insertCell(4);
+                            tbval.rows[i].cells[4].innerHTML = data['statewise'][i]['recovered'];
+                            tbval.rows[i].cells[4].style.color = 'chartreuse' ;
+                            x.insertCell(5);
+                            tbval.rows[i].cells[5].innerHTML = data['statewise'][i]['deaths'];
+                            tbval.rows[i].cells[5].style.color = 'rgb(255, 91, 91)' ;
+
+
+                        }
+                    }
+                )
+
+            }
+            function dailyfetch(){
+                $.get("https://api.covid19india.org/states_daily.json",
+
+                    function (data){
+
+                            var j=data['states_daily'].length;
+
+                            document.getElementById('date').innerHTML=" Showing Data of "+data['states_daily'][j-1]['date'];
+                            document.getElementById('dcon').innerHTML=data['states_daily'][j-3]['tt'];
+
+                            document.getElementById('drcv').innerHTML=data['states_daily'][j-2]['tt'];
+                            document.getElementById('ddth').innerHTML=data['states_daily'][j-1]['tt'];
+                            var tbval1 =document.getElementById('tbval1');
+
+                            if(counter==0){
+                                    var a=document.getElementById('1');
+                                a.insertCell(1);
+                                tbval1.rows[1].cells[1].innerHTML = data['states_daily'][j-3]['an'];
+                                tbval1.rows[1].cells[1].style.color='yellow';
+                                a.insertCell(2);
+                                tbval1.rows[1].cells[2].innerHTML = data['states_daily'][j-2]['an'];
+                                tbval1.rows[1].cells[2].style.color='chartreuse';
+                                a.insertCell(3);
+                                tbval1.rows[1].cells[3].innerHTML = data['states_daily'][j-1]['an'];
+                                tbval1.rows[1].cells[3].style.color='rgb(255, 91, 91)';
+
+                                var b=document.getElementById('2');
+                                b.insertCell(1);
+                                tbval1.rows[2].cells[1].innerHTML = data['states_daily'][j-3]['ap'];
+                                tbval1.rows[2].cells[1].style.color='yellow';
+                                b.insertCell(2);
+                                tbval1.rows[2].cells[2].innerHTML = data['states_daily'][j-2]['ap'];
+                                tbval1.rows[2].cells[2].style.color='chartreuse';
+                                b.insertCell(3);
+                                tbval1.rows[2].cells[3].innerHTML = data['states_daily'][j-1]['ap'];
+                                tbval1.rows[2].cells[3].style.color='rgb(255, 91, 91)';
+
+                                var c=document.getElementById('3');
+                                c.insertCell(1);
+                                tbval1.rows[3].cells[1].innerHTML = data['states_daily'][j-3]['ar'];
+                                tbval1.rows[3].cells[1].style.color='yellow';
+                                c.insertCell(2);
+                                tbval1.rows[3].cells[2].innerHTML = data['states_daily'][j-2]['ar'];
+                                tbval1.rows[3].cells[2].style.color='chartreuse';
+                                c.insertCell(3);
+                                tbval1.rows[3].cells[3].innerHTML = data['states_daily'][j-1]['ar'];
+                                tbval1.rows[3].cells[3].style.color='rgb(255, 91, 91)';
+
+                                var d=document.getElementById('4');
+                                d.insertCell(1);
+                                tbval1.rows[4].cells[1].innerHTML = data['states_daily'][j-3]['as'];
+                                tbval1.rows[4].cells[1].style.color='yellow';
+                                d.insertCell(2);
+                                tbval1.rows[4].cells[2].innerHTML = data['states_daily'][j-2]['as'];
+                                tbval1.rows[4].cells[2].style.color='chartreuse';
+                                d.insertCell(3);
+                                tbval1.rows[4].cells[3].innerHTML = data['states_daily'][j-1]['as'];
+                                tbval1.rows[4].cells[3].style.color='rgb(255, 91, 91)';
+
+                                var e=document.getElementById('5');
+                                e.insertCell(1);
+                                tbval1.rows[5].cells[1].innerHTML = data['states_daily'][j-3]['br'];
+                                tbval1.rows[5].cells[1].style.color='yellow';
+                                e.insertCell(2);
+                                tbval1.rows[5].cells[2].innerHTML = data['states_daily'][j-2]['br'];
+                                tbval1.rows[5].cells[2].style.color='chartreuse';
+                                e.insertCell(3);
+                                tbval1.rows[5].cells[3].innerHTML = data['states_daily'][j-1]['br'];
+                                tbval1.rows[5].cells[3].style.color='rgb(255, 91, 91)';
+
+                                var f=document.getElementById('6');
+                                f.insertCell(1);
+                                tbval1.rows[6].cells[1].innerHTML = data['states_daily'][j-3]['ch'];
+                                tbval1.rows[6].cells[1].style.color='yellow';
+                                f.insertCell(2);
+                                tbval1.rows[6].cells[2].innerHTML = data['states_daily'][j-2]['ch'];
+                                tbval1.rows[6].cells[2].style.color='chartreuse';
+                                f.insertCell(3);
+                                tbval1.rows[6].cells[3].innerHTML = data['states_daily'][j-1]['ch'];
+                                tbval1.rows[6].cells[3].style.color='rgb(255, 91, 91)';
+
+                                var g=document.getElementById('7');
+                                g.insertCell(1);
+                                tbval1.rows[7].cells[1].innerHTML = data['states_daily'][j-3]['ct'];
+                                tbval1.rows[7].cells[1].style.color='yellow';
+                                g.insertCell(2);
+                                tbval1.rows[7].cells[2].innerHTML = data['states_daily'][j-2]['ct'];
+                                tbval1.rows[7].cells[2].style.color='chartreuse';
+                                g.insertCell(3);
+                                tbval1.rows[7].cells[3].innerHTML = data['states_daily'][j-1]['ct'];
+                                tbval1.rows[7].cells[3].style.color='rgb(255, 91, 91)';
+
+                                var h=document.getElementById('8');
+                                h.insertCell(1);
+                                tbval1.rows[8].cells[1].innerHTML = data['states_daily'][j-3]['dd'];
+                                tbval1.rows[8].cells[1].style.color='yellow';
+                                h.insertCell(2);
+                                tbval1.rows[8].cells[2].innerHTML = data['states_daily'][j-2]['dd'];
+                                tbval1.rows[8].cells[2].style.color='chartreuse';
+                                h.insertCell(3);
+                                tbval1.rows[8].cells[3].innerHTML = data['states_daily'][j-1]['dd'];
+                                tbval1.rows[8].cells[3].style.color='rgb(255, 91, 91)';
+
+                                var i=document.getElementById('9');
+                                i.insertCell(1);
+                                tbval1.rows[9].cells[1].innerHTML = data['states_daily'][j-3]['dl'];
+                                tbval1.rows[9].cells[1].style.color='yellow';
+                                i.insertCell(2);
+                                tbval1.rows[9].cells[2].innerHTML = data['states_daily'][j-2]['dl'];
+                                tbval1.rows[9].cells[2].style.color='chartreuse';
+                                i.insertCell(3);
+                                tbval1.rows[9].cells[3].innerHTML = data['states_daily'][j-1]['dl'];
+                                tbval1.rows[9].cells[3].style.color='rgb(255, 91, 91)';
+
+                                var j1=document.getElementById('10');
+                                j1.insertCell(1);
+                                tbval1.rows[10].cells[1].innerHTML = data['states_daily'][j-3]['dn'];
+                                tbval1.rows[10].cells[1].style.color='yellow';
+                                j1.insertCell(2);
+                                tbval1.rows[10].cells[2].innerHTML = data['states_daily'][j-2]['dn'];
+                                tbval1.rows[10].cells[2].style.color='chartreuse';
+                                j1.insertCell(3);
+                                tbval1.rows[10].cells[3].innerHTML = data['states_daily'][j-1]['dn'];
+                                tbval1.rows[10].cells[3].style.color='rgb(255, 91, 91)';
+
+                                var k=document.getElementById('11');
+                                k.insertCell(1);
+                                tbval1.rows[11].cells[1].innerHTML = data['states_daily'][j-3]['ga'];
+                                tbval1.rows[11].cells[1].style.color='yellow';
+                                k.insertCell(2);
+                                tbval1.rows[11].cells[2].innerHTML = data['states_daily'][j-2]['ga'];
+                                tbval1.rows[11].cells[2].style.color='chartreuse';
+                                k.insertCell(3);
+                                tbval1.rows[11].cells[3].innerHTML = data['states_daily'][j-1]['ga'];
+                                tbval1.rows[11].cells[3].style.color='rgb(255, 91, 91)';
+
+                                var l=document.getElementById('12');
+                                l.insertCell(1);
+                                tbval1.rows[12].cells[1].innerHTML = data['states_daily'][j-3]['gj'];
+                                tbval1.rows[12].cells[1].style.color='yellow';
+                                l.insertCell(2);
+                                tbval1.rows[12].cells[2].innerHTML = data['states_daily'][j-2]['gj'];
+                                tbval1.rows[12].cells[2].style.color='chartreuse';
+                                l.insertCell(3);
+                                tbval1.rows[12].cells[3].innerHTML = data['states_daily'][j-1]['gj'];
+                                tbval1.rows[12].cells[3].style.color='rgb(255, 91, 91)';
+
+                                var m=document.getElementById('13');
+                                m.insertCell(1);
+                                tbval1.rows[13].cells[1].innerHTML = data['states_daily'][j-3]['hp'];
+                                tbval1.rows[13].cells[1].style.color='yellow';
+                                m.insertCell(2);
+                                tbval1.rows[13].cells[2].innerHTML = data['states_daily'][j-2]['hp'];
+                                tbval1.rows[13].cells[2].style.color='chartreuse';
+                                m.insertCell(3);
+                                tbval1.rows[13].cells[3].innerHTML = data['states_daily'][j-1]['hp'];
+                                tbval1.rows[13].cells[3].style.color='rgb(255, 91, 91)';
+
+                                var n=document.getElementById('14');
+                                n.insertCell(1);
+                                tbval1.rows[14].cells[1].innerHTML = data['states_daily'][j-3]['hr'];
+                                tbval1.rows[14].cells[1].style.color='yellow';
+                                n.insertCell(2);
+                                tbval1.rows[14].cells[2].innerHTML = data['states_daily'][j-2]['hr'];
+                                tbval1.rows[14].cells[2].style.color='chartreuse';
+                                n.insertCell(3);
+                                tbval1.rows[14].cells[3].innerHTML = data['states_daily'][j-1]['hr'];
+                                tbval1.rows[14].cells[3].style.color='rgb(255, 91, 91)';
+
+                                var o=document.getElementById('15');
+                                o.insertCell(1);
+                                tbval1.rows[15].cells[1].innerHTML = data['states_daily'][j-3]['jh'];
+                                tbval1.rows[15].cells[1].style.color='yellow';
+                                o.insertCell(2);
+                                tbval1.rows[15].cells[2].innerHTML = data['states_daily'][j-2]['jh'];
+                                tbval1.rows[15].cells[2].style.color='chartreuse';
+                                o.insertCell(3);
+                                tbval1.rows[15].cells[3].innerHTML = data['states_daily'][j-1]['jh'];
+                                tbval1.rows[15].cells[3].style.color='rgb(255, 91, 91)';
+
+                                var p=document.getElementById('16');
+                                p.insertCell(1);
+                                tbval1.rows[16].cells[1].innerHTML = data['states_daily'][j-3]['jk'];
+                                tbval1.rows[16].cells[1].style.color='yellow';
+                                p.insertCell(2);
+                                tbval1.rows[16].cells[2].innerHTML = data['states_daily'][j-2]['jk'];
+                                tbval1.rows[16].cells[2].style.color='chartreuse';
+                                p.insertCell(3);
+                                tbval1.rows[16].cells[3].innerHTML = data['states_daily'][j-1]['jk'];
+                                tbval1.rows[16].cells[3].style.color='rgb(255, 91, 91)';
+
+                                var q=document.getElementById('17');
+                                q.insertCell(1);
+                                tbval1.rows[17].cells[1].innerHTML = data['states_daily'][j-3]['ka'];
+                                tbval1.rows[17].cells[1].style.color='yellow';
+                                q.insertCell(2);
+                                tbval1.rows[17].cells[2].innerHTML = data['states_daily'][j-2]['ka'];
+                                tbval1.rows[17].cells[2].style.color='chartreuse';
+                                q.insertCell(3);
+                                tbval1.rows[17].cells[3].innerHTML = data['states_daily'][j-1]['ka'];
+                                tbval1.rows[17].cells[3].style.color='rgb(255, 91, 91)';
+
+                                var r=document.getElementById('18');
+                                r.insertCell(1);
+                                tbval1.rows[18].cells[1].innerHTML = data['states_daily'][j-3]['kl'];
+                                tbval1.rows[18].cells[1].style.color='yellow';
+                                r.insertCell(2);
+                                tbval1.rows[18].cells[2].innerHTML = data['states_daily'][j-2]['kl'];
+                                tbval1.rows[18].cells[2].style.color='chartreuse';
+                                r.insertCell(3);
+                                tbval1.rows[18].cells[3].innerHTML = data['states_daily'][j-1]['kl'];
+                                tbval1.rows[18].cells[3].style.color='rgb(255, 91, 91)';
+
+                                var s=document.getElementById('19');
+                                s.insertCell(1);
+                                tbval1.rows[19].cells[1].innerHTML = data['states_daily'][j-3]['la'];
+                                tbval1.rows[19].cells[1].style.color='yellow';
+                                s.insertCell(2);
+                                tbval1.rows[19].cells[2].innerHTML = data['states_daily'][j-2]['la'];
+                                tbval1.rows[19].cells[2].style.color='chartreuse';
+                                s.insertCell(3);
+                                tbval1.rows[19].cells[3].innerHTML = data['states_daily'][j-1]['la'];
+                                tbval1.rows[19].cells[3].style.color='rgb(255, 91, 91)';
+
+                                var t=document.getElementById('20');
+                                t.insertCell(1);
+                                tbval1.rows[20].cells[1].innerHTML = data['states_daily'][j-3]['ld'];
+                                tbval1.rows[20].cells[1].style.color='yellow';
+                                t.insertCell(2);
+                                tbval1.rows[20].cells[2].innerHTML = data['states_daily'][j-2]['ld'];
+                                tbval1.rows[20].cells[2].style.color='chartreuse';
+                                t.insertCell(3);
+                                tbval1.rows[20].cells[3].innerHTML = data['states_daily'][j-1]['ld'];
+                                tbval1.rows[20].cells[3].style.color='rgb(255, 91, 91)';
+
+                                var u=document.getElementById('21');
+                                u.insertCell(1);
+                                tbval1.rows[21].cells[1].innerHTML = data['states_daily'][j-3]['mh'];
+                                tbval1.rows[21].cells[1].style.color='yellow';
+                                u.insertCell(2);
+                                tbval1.rows[21].cells[2].innerHTML = data['states_daily'][j-2]['mh'];
+                                tbval1.rows[21].cells[2].style.color='chartreuse';
+                                u.insertCell(3);
+                                tbval1.rows[21].cells[3].innerHTML = data['states_daily'][j-1]['mh'];
+                                tbval1.rows[21].cells[3].style.color='rgb(255, 91, 91)';
+
+                                var v=document.getElementById('22');
+                                v.insertCell(1);
+                                tbval1.rows[22].cells[1].innerHTML = data['states_daily'][j-3]['ml'];
+                                tbval1.rows[22].cells[1].style.color='yellow';
+                                v.insertCell(2);
+                                tbval1.rows[22].cells[2].innerHTML = data['states_daily'][j-2]['ml'];
+                                tbval1.rows[22].cells[2].style.color='chartreuse';
+                                v.insertCell(3);
+                                tbval1.rows[22].cells[3].innerHTML = data['states_daily'][j-1]['ml'];
+                                tbval1.rows[22].cells[3].style.color='rgb(255, 91, 91)';
+
+                                var w=document.getElementById('23');
+                                w.insertCell(1);
+                                tbval1.rows[23].cells[1].innerHTML = data['states_daily'][j-3]['mn'];
+                                tbval1.rows[23].cells[1].style.color='yellow';
+                                w.insertCell(2);
+                                tbval1.rows[23].cells[2].innerHTML = data['states_daily'][j-2]['mn'];
+                                tbval1.rows[23].cells[2].style.color='chartreuse';
+                                w.insertCell(3);
+                                tbval1.rows[23].cells[3].innerHTML = data['states_daily'][j-1]['mn'];
+                                tbval1.rows[23].cells[3].style.color='rgb(255, 91, 91)';
+
+                                var x=document.getElementById('24');
+                                x.insertCell(1);
+                                tbval1.rows[24].cells[1].innerHTML = data['states_daily'][j-3]['mp'];
+                                tbval1.rows[24].cells[1].style.color='yellow';
+                                x.insertCell(2);
+                                tbval1.rows[24].cells[2].innerHTML = data['states_daily'][j-2]['mp'];
+                                tbval1.rows[24].cells[2].style.color='chartreuse';
+                                x.insertCell(3);
+                                tbval1.rows[24].cells[3].innerHTML = data['states_daily'][j-1]['mp'];
+                                tbval1.rows[24].cells[3].style.color='rgb(255, 91, 91)';
+
+                                var y=document.getElementById('25');
+                                y.insertCell(1);
+                                tbval1.rows[25].cells[1].innerHTML = data['states_daily'][j-3]['mz'];
+                                tbval1.rows[25].cells[1].style.color='yellow';
+                                y.insertCell(2);
+                                tbval1.rows[25].cells[2].innerHTML = data['states_daily'][j-2]['mz'];
+                                tbval1.rows[25].cells[2].style.color='chartreuse';
+                                y.insertCell(3);
+                                tbval1.rows[25].cells[3].innerHTML = data['states_daily'][j-1]['mz'];
+                                tbval1.rows[25].cells[3].style.color='rgb(255, 91, 91)';
+
+                                var z=document.getElementById('26');
+                                z.insertCell(1);
+                                tbval1.rows[26].cells[1].innerHTML = data['states_daily'][j-3]['nl'];
+                                tbval1.rows[26].cells[1].style.color='yellow';
+                                z.insertCell(2);
+                                tbval1.rows[26].cells[2].innerHTML = data['states_daily'][j-2]['nl'];
+                                tbval1.rows[26].cells[2].style.color='chartreuse';
+                                z.insertCell(3);
+                                tbval1.rows[26].cells[3].innerHTML = data['states_daily'][j-1]['nl'];
+                                tbval1.rows[26].cells[3].style.color='rgb(255, 91, 91)';
+
+                                var a1=document.getElementById('27');
+                                a1.insertCell(1);
+                                tbval1.rows[27].cells[1].innerHTML = data['states_daily'][j-3]['or'];
+                                tbval1.rows[27].cells[1].style.color='yellow';
+                                a1.insertCell(2);
+                                tbval1.rows[27].cells[2].innerHTML = data['states_daily'][j-2]['or'];
+                                tbval1.rows[27].cells[2].style.color='chartreuse';
+                                a1.insertCell(3);
+                                tbval1.rows[27].cells[3].innerHTML = data['states_daily'][j-1]['or'];
+                                tbval1.rows[27].cells[3].style.color='rgb(255, 91, 91)';
+
+                                var b1=document.getElementById('28');
+                                b1.insertCell(1);
+                                tbval1.rows[28].cells[1].innerHTML = data['states_daily'][j-3]['pb'];
+                                tbval1.rows[28].cells[1].style.color='yellow';
+                                b1.insertCell(2);
+                                tbval1.rows[28].cells[2].innerHTML = data['states_daily'][j-2]['pb'];
+                                tbval1.rows[28].cells[2].style.color='chartreuse';
+                                b1.insertCell(3);
+                                tbval1.rows[28].cells[3].innerHTML = data['states_daily'][j-1]['pb'];
+                                tbval1.rows[28].cells[3].style.color='rgb(255, 91, 91)';
+
+                                var c1=document.getElementById('29');
+                                c1.insertCell(1);
+                                tbval1.rows[29].cells[1].innerHTML = data['states_daily'][j-3]['py'];
+                                tbval1.rows[29].cells[1].style.color='yellow';
+                                c1.insertCell(2);
+                                tbval1.rows[29].cells[2].innerHTML = data['states_daily'][j-2]['py'];
+                                tbval1.rows[29].cells[2].style.color='chartreuse';
+                                c1.insertCell(3);
+                                tbval1.rows[29].cells[3].innerHTML = data['states_daily'][j-1]['py'];
+                                tbval1.rows[29].cells[3].style.color='rgb(255, 91, 91)';
+
+                                var d1=document.getElementById('30');
+                                d1.insertCell(1);
+                                tbval1.rows[30].cells[1].innerHTML = data['states_daily'][j-3]['rj'];
+                                tbval1.rows[30].cells[1].style.color='yellow';
+                                d1.insertCell(2);
+                                tbval1.rows[30].cells[2].innerHTML = data['states_daily'][j-2]['rj'];
+                                tbval1.rows[30].cells[2].style.color='chartreuse';
+                                d1.insertCell(3);
+                                tbval1.rows[30].cells[3].innerHTML = data['states_daily'][j-1]['rj'];
+                                tbval1.rows[30].cells[3].style.color='rgb(255, 91, 91)';
+
+                                var e1=document.getElementById('31');
+                                e1.insertCell(1);
+                                tbval1.rows[31].cells[1].innerHTML = data['states_daily'][j-3]['sk'];
+                                tbval1.rows[31].cells[1].style.color='yellow';
+                                e1.insertCell(2);
+                                tbval1.rows[31].cells[2].innerHTML = data['states_daily'][j-2]['sk'];
+                                tbval1.rows[31].cells[2].style.color='chartreuse';
+                                e1.insertCell(3);
+                                tbval1.rows[31].cells[3].innerHTML = data['states_daily'][j-1]['sk'];
+                                tbval1.rows[31].cells[3].style.color='rgb(255, 91, 91)';
+
+                                var f1=document.getElementById('32');
+                                f1.insertCell(1);
+                                tbval1.rows[32].cells[1].innerHTML = data['states_daily'][j-3]['tg'];
+                                tbval1.rows[32].cells[1].style.color='yellow';
+                                f1.insertCell(2);
+                                tbval1.rows[32].cells[2].innerHTML = data['states_daily'][j-2]['tg'];
+                                tbval1.rows[32].cells[2].style.color='chartreuse';
+                                f1.insertCell(3);
+                                tbval1.rows[32].cells[3].innerHTML = data['states_daily'][j-1]['tg'];
+                                tbval1.rows[32].cells[3].style.color='rgb(255, 91, 91)';
+
+                                var g1=document.getElementById('33');
+                                g1.insertCell(1);
+                                tbval1.rows[33].cells[1].innerHTML = data['states_daily'][j-3]['tn'];
+                                tbval1.rows[33].cells[1].style.color='yellow';
+                                g1.insertCell(2);
+                                tbval1.rows[33].cells[2].innerHTML = data['states_daily'][j-2]['tn'];
+                                tbval1.rows[33].cells[2].style.color='chartreuse';
+                                g1.insertCell(3);
+                                tbval1.rows[33].cells[3].innerHTML = data['states_daily'][j-1]['tn'];
+                                tbval1.rows[33].cells[3].style.color='rgb(255, 91, 91)';
+
+                                var h1=document.getElementById('34');
+                                h1.insertCell(1);
+                                tbval1.rows[34].cells[1].innerHTML = data['states_daily'][j-3]['tr'];
+                                tbval1.rows[34].cells[1].style.color='yellow';
+                                h1.insertCell(2);
+                                tbval1.rows[34].cells[2].innerHTML = data['states_daily'][j-2]['tr'];
+                                tbval1.rows[34].cells[2].style.color='chartreuse';
+                                h1.insertCell(3);
+                                tbval1.rows[34].cells[3].innerHTML = data['states_daily'][j-1]['tr'];
+                                tbval1.rows[34].cells[3].style.color='rgb(255, 91, 91)';
+
+                                var i1=document.getElementById('35');
+                                i1.insertCell(1);
+                                tbval1.rows[35].cells[1].innerHTML = data['states_daily'][j-3]['up'];
+                                tbval1.rows[35].cells[1].style.color='yellow';
+                                i1.insertCell(2);
+                                tbval1.rows[35].cells[2].innerHTML = data['states_daily'][j-2]['up'];
+                                tbval1.rows[35].cells[2].style.color='chartreuse';
+                                i1.insertCell(3);
+                                tbval1.rows[35].cells[3].innerHTML = data['states_daily'][j-1]['up'];
+                                tbval1.rows[35].cells[3].style.color='rgb(255, 91, 91)';
+
+                                var k1=document.getElementById('36');
+                                k1.insertCell(1);
+                                tbval1.rows[36].cells[1].innerHTML = data['states_daily'][j-3]['ut'];
+                                tbval1.rows[36].cells[1].style.color='yellow';
+                                k1.insertCell(2);
+                                tbval1.rows[36].cells[2].innerHTML = data['states_daily'][j-2]['ut'];
+                                tbval1.rows[36].cells[2].style.color='chartreuse';
+                                k1.insertCell(3);
+                                tbval1.rows[36].cells[3].innerHTML = data['states_daily'][j-1]['ut'];
+                                tbval1.rows[36].cells[3].style.color='rgb(255, 91, 91)';
+
+                                var l1=document.getElementById('37');
+                                l1.insertCell(1);
+                                tbval1.rows[37].cells[1].innerHTML = data['states_daily'][j-3]['wb'];
+                                tbval1.rows[37].cells[1].style.color='yellow';
+                                l1.insertCell(2);
+                                tbval1.rows[37].cells[2].innerHTML = data['states_daily'][j-2]['wb'];
+                                tbval1.rows[37].cells[2].style.color='chartreuse';
+                                l1.insertCell(3);
+                                tbval1.rows[37].cells[3].innerHTML = data['states_daily'][j-1]['wb'];
+                                tbval1.rows[37].cells[3].style.color='rgb(255, 91, 91)';
+
+                                counter++;
+
+                    }
+                    }
+
+                )
+            }
+
+            function dailyhist(){
+                $.get("https://api.covid19india.org/states_daily.json",
+
+                    function (data){
+
+                            var j=data['states_daily'].length;
+                            var tbval2 =document.getElementById('tbval2');
+
+                            document.getElementById('date3').innerHTML=" Showing Data of "+data['states_daily'][j-1]['date'];
+                            document.getElementById('dcon1').innerHTML=data['states_daily'][j-3]['tt'];
+
+                            document.getElementById('drcv1').innerHTML=data['states_daily'][j-2]['tt'];
+                            document.getElementById('ddth1').innerHTML=data['states_daily'][j-1]['tt'];
+                            for(var i=1;i<30;i++)
+                        {
+                            var x= tbval2.insertRow();
+                            x.insertCell(0);
+                            tbval2.rows[i].cells[0].innerHTML = data['states_daily'][(j-(3*i))]['date'];
+                            tbval2.rows[i].cells[0].style.color = 'white' ;
+                            x.insertCell(1);
+                            tbval2.rows[i].cells[1].innerHTML = data['states_daily'][(j-(3*i))]['tt'];
+                            tbval2.rows[i].cells[1].style.color = 'yellow' ;
+
+                            x.insertCell(2);
+                            tbval2.rows[i].cells[2].innerHTML = data['states_daily'][(j-(3*i))+1]['tt'];
+                            tbval2.rows[i].cells[2].style.color = 'chartreuse' ;
+                            x.insertCell(3);
+                            tbval2.rows[i].cells[3].innerHTML = data['states_daily'][(j-(3*i))+2]['tt'];
+                            tbval2.rows[i].cells[3].style.color = 'rgb(255, 91, 91)' ;
+
+                        }
+                    }
+                )
+
+            }
+            function sortTable(n) {
+                var table, rows, switching, i, x, y, shouldSwitch;
+  table = document.getElementById("tbval");
+  switching = true;
+  /*Make a loop that will continue until
+  no switching has been done:*/
+  while (switching) {
+    //start by saying: no switching is done:
+    switching = false;
+    rows = table.rows;
+    /*Loop through all table rows (except the
+    first, which contains table headers):*/
+    for (i = 1; i < (rows.length - 1); i++) {
+      //start by saying there should be no switching:
+      shouldSwitch = false;
+      /*Get the two elements you want to compare,
+      one from current row and one from the next:*/
+      x = rows[i].getElementsByTagName("TD")[n];
+      y = rows[i + 1].getElementsByTagName("TD")[n];
+      //check if the two rows should switch place:
+      if (Number(x.innerHTML) < Number(y.innerHTML)) {
+        //if so, mark as a switch and break the loop:
+        shouldSwitch = true;
+        break;
+      }
+    }
+    if (shouldSwitch) {
+      /*If a switch has been marked, make the switch
+      and mark that a switch has been done:*/
+      rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+      switching = true;
+    }
+  }
+}
+
+function sortTable1(n) {
+                var table, rows, switching, i, x, y, shouldSwitch;
+  table = document.getElementById("tbval1");
+  switching = true;
+  /*Make a loop that will continue until
+  no switching has been done:*/
+  while (switching) {
+    //start by saying: no switching is done:
+    switching = false;
+    rows = table.rows;
+    /*Loop through all table rows (except the
+    first, which contains table headers):*/
+    for (i = 1; i < (rows.length - 1); i++) {
+      //start by saying there should be no switching:
+      shouldSwitch = false;
+      /*Get the two elements you want to compare,
+      one from current row and one from the next:*/
+      x = rows[i].getElementsByTagName("TD")[n];
+      y = rows[i + 1].getElementsByTagName("TD")[n];
+      //check if the two rows should switch place:
+      if (Number(x.innerHTML) < Number(y.innerHTML)) {
+        //if so, mark as a switch and break the loop:
+        shouldSwitch = true;
+        break;
+      }
+    }
+    if (shouldSwitch) {
+      /*If a switch has been marked, make the switch
+      and mark that a switch has been done:*/
+      rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+      switching = true;
+    }
+  }
+}
+
+        </script>
+
+    </body>
+</html>
